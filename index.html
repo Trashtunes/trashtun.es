@@ -1,0 +1,352 @@
+
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <style>
+        body {	
+        margin: 0;
+        padding: 0;
+        background-color: #ccc7c2;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23cc0000' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23aa0000' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23d6002b' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23b10022' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23d9004b' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23b2003d' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23d3006c' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23ac0057' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23c4008c' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%239e0071' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+        
+        color: rgb(50,50,50);
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 112.5%;
+        line-height: 1.6em;
+        }
+
+        .container {
+            display: flex; 
+        }
+
+        h1{
+            height: 10rem;
+            margin: auto;
+            padding: 5rem 0 0 0;
+            transform: rotate(-8deg);
+            font-size:8rem;
+                letter-spacing:0.1em;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: white;
+            text-shadow: 
+						8px 8px #d3006c,
+						20px 20px #000000;
+        }
+        
+
+        .timeline {
+        position: relative;
+        width: 660px;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 1em 0;
+        list-style-type: none;
+        }
+
+        .timeline:before {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        content: ' ';
+        display: block;
+        width: 6px;
+        height: 100%;
+        margin-left: -3px;
+        background: rgb(80,80,80);
+        background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+        
+        z-index: 5;
+        }
+
+        .timeline li {
+        padding: 1em 0;
+        }
+
+        .timeline li:after {
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        }
+
+        .direction-l {
+        position: relative;
+        width: 300px;
+        float: left;
+        text-align: right;
+        }
+
+        .direction-r {
+        position: relative;
+        width: 300px;
+        float: right;
+        }
+
+        .flag-wrapper {
+        position: relative;
+        display: inline-block;
+        
+        text-align: center;
+        }
+
+        .flag {
+        position: relative;
+        display: inline;
+        background: rgb(248,248,248);
+        padding: 6px 10px;
+        border-radius: 5px;
+        
+        font-weight: 600;
+        text-align: left;
+        }
+
+        .direction-l .flag {
+             box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+        }
+
+        .direction-r .flag {
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+        }
+
+        .direction-l .flag:before,
+        .direction-r .flag:before {
+        position: absolute;
+        top: 50%;
+        right: -40px;
+        content: ' ';
+        display: block;
+        width: 12px;
+        height: 12px;
+        margin-top: -10px;
+        background: #fff;
+        border-radius: 10px;
+        border: 4px solid #d3006c;
+        z-index: 10;
+        }
+
+        .direction-r .flag:before {
+        left: -40px;
+        }
+
+        .direction-l .flag:after {
+        content: "";
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        height: 0;
+        width: 0;
+        margin-top: -8px;
+        border: solid transparent;
+        border-left-color: rgb(248,248,248);
+        border-width: 8px;
+        pointer-events: none;
+        }
+
+        .direction-r .flag:after {
+        content: "";
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        height: 0;
+        width: 0;
+        margin-top: -8px;
+        border: solid transparent;
+        border-right-color: rgb(248,248,248);
+        border-width: 8px;
+        pointer-events: none;
+        }
+
+        .time-wrapper {
+        display: inline;
+        
+        line-height: 1em;
+        font-size: 0.66666em;
+        color: #d3006c;
+        vertical-align: middle;
+        }
+
+        .direction-l .time-wrapper {
+        float: left;
+        }
+
+        .direction-r .time-wrapper {
+        float: right;
+        }
+
+        .time {
+        display: inline-block;
+        padding: 4px 6px;
+        background: rgb(248,248,248);
+        }
+
+        .desc {
+        margin: 1em 0.75em 0 0;
+        
+        font-size: 0.77777em;
+        font-style: italic;
+        line-height: 1.5em;
+        }
+
+        .direction-r .desc {
+        margin: 1em 0 0 0.75em;
+        }
+
+        /* ================  Media Queries ================ */
+
+        @media screen and (max-width: 660px) {
+
+        .timeline {
+            width: 100%;
+            padding: 4em 0 1em 0;
+        }
+
+        h1{
+            font-size: 4rem;
+        }
+
+        .timeline li {
+            padding: 2em 0;
+        }
+
+        .direction-l,
+        .direction-r {
+            float: none;
+            width: 100%;
+
+            text-align: center;
+        }
+
+        .flag-wrapper {
+            text-align: center;
+        }
+
+        .flag {
+            background: rgb(255,255,255);
+            z-index: 15;
+        }
+
+        .direction-l .flag:before,
+        .direction-r .flag:before {
+        position: absolute;
+        top: -30px;
+            left: 50%;
+            content: ' ';
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin-left: -9px;
+            background: #fff;
+            border-radius: 10px;
+            border: 4px solid #d3006c;
+            z-index: 10;
+        }
+
+        .direction-l .flag:after,
+        .direction-r .flag:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: -8px;
+            height: 0;
+            width: 0;
+            margin-left: -8px;
+            border: solid transparent;
+            border-bottom-color: rgb(255,255,255);
+            border-width: 8px;
+            pointer-events: none;
+        }
+
+        .time-wrapper {
+            display: block;
+            position: relative;
+            margin: 4px 0 0 0;
+            z-index: 14;
+        }
+
+        .direction-l .time-wrapper {
+            float: none;
+        }
+
+        .direction-r .time-wrapper {
+            float: none;
+        }
+
+        .desc {
+            position: relative;
+            margin: 1em 0 0 0;
+            padding: 1em;
+            background: rgb(245,245,245);
+            -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+            -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+            box-shadow: 0 0 1px rgba(0,0,0,0.20);
+            
+        z-index: 15;
+        }
+
+        .direction-l .desc,
+        .direction-r .desc {
+            position: relative;
+            margin: 1em 1em 0 1em;
+            padding: 1em;
+            
+        z-index: 15;
+        }
+
+        }
+
+        }
+
+
+
+
+    </style>
+</head>
+
+ 
+    <body>
+        <div class="container">
+            <h1>Trash Tun.es</h1>
+        </div> 
+        <ul class="timeline">
+            <!-- Item 1 -->
+            <li>
+                <div class="direction-r">
+                    <div class="flag-wrapper">
+                        <span class="flag">M E D I S</span>
+                        <span class="time-wrapper"><span class="time">21.07.2020</span></span>
+                    </div>
+                    <div class="desc"><iframe src="https://open.spotify.com/embed/album/2tnOHvXHWJclKPmRkjvm0h" width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+                </div>
+            </li>
+        
+            <!-- Item 2 -->
+            <li>
+                <div class="direction-l">
+                    <div class="flag-wrapper">
+                        <span class="flag">Music 02</span>
+                        <span class="time-wrapper"><span class="time">10.07.2020</span></span>
+                    </div>
+                    <div class="desc"><iframe src="https://open.spotify.com/embed/album/0QXXJn1VExfq7lZW68NHVz" width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+                </div>
+            </li>
+
+            <!-- Item 3 -->
+            <li>
+                <div class="direction-r">
+                    <div class="flag-wrapper">
+                        <span class="flag">Music 03</span>
+                        <span class="time-wrapper"><span class="time">23.06.2020</span></span>
+                    </div>
+                    <div class="desc"><iframe src="https://open.spotify.com/embed/track/5nqtadnwcFfn3TFo2Hn92z" width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+                </div>
+            </li>
+        
+
+            
+        </ul>
+    </body>
+</html>
