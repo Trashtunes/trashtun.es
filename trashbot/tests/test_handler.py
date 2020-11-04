@@ -33,12 +33,3 @@ def message(text):
         text=text,
     )
 
-
-def test_update():
-    update = Update(1, message("/track"))
-    assert track_callback(update) == True
-
-
-def test_update1():
-    update = Update(1, message("/start"))
-    assert start_callback(update) == False
