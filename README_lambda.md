@@ -1,15 +1,35 @@
-# trashtunes
+# Lambda Telegram Bot Quickstart
+
+## Setting up local environment
+1. Create python3.8 virtual environment `python3.8 -m venv venv`
+2. Activate virtual environment `source venv/bin/activate`
+3. Install python dependencies `pip3 install -r trashbot/requirements.txt`
+4. Setup AWS SAM CLI https://github.com/awsdocs/aws-sam-developer-guide/blob/master/doc_source/serverless-sam-cli-install-mac.md
+
+## Get endpoint and credentials
+5. Deploy application with `sam build --use-container` and `sam deploy --guided`. Note down Endpoint-URL
+6. Use botfather https://t.me/botfather to create a bot. Note down API Token
+
+## Configure and register endpoint and credential
+7. Enter the endpoint URL from step 5 and API Token from step 6 in trashbot/app.py
+8. Run `python trashbot/setup.py` to register the lambda-endpoint
+
+## Redeploy after changes
+9. Repeat step 5
+
+
+## SAM CLI
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - hello_world - Code for the application's Lambda function.
 - events - Invocation events that you can use to invoke the function.
-- tests - Unit tests for the application code. 
+- tests - Unit tests for the application code.
 - template.yaml - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
+If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.
 The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
 
 * [PyCharm](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
