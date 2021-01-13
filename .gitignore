@@ -1,6 +1,13 @@
 
 # Created by https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
 
+### Jekyll ###
+.jekyll-cache
+
+
+### Mac ###
+.DS_Store
+
 ### Linux ###
 *~
 
@@ -240,5 +247,5 @@ $RECYCLE.BIN/
 # Build folder
 
 */build/*
-
+_site
 # End of https://www.gitignore.io/api/osx,linux,python,windows,pycharm,visualstudiocode
