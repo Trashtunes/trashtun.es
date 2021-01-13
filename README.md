@@ -9,3 +9,7 @@
 ## Deployment (propably)
 1. Set repository public
 2. Go to the repo-settings -> Github Pages and activate them for the ```gh-pages``` branch
+
+
+## Adding Posts
+Add a new entry to _data/trash.yml
