@@ -1,0 +1,11 @@
+{% for trash in site.data.trash %}
+    <li class="direction">
+        <div>
+            <div class="flag-wrapper">
+                <span class="flag">{{trash.songname}}</span>
+                <span class="time-wrapper"><span class="time">{{ trash.date | date_to_string }}</span></span>
+            </div>
+            <div class="desc"><iframe src={{trash.spotifyurl}} width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
+        </div>
+    </li>
+{% endfor %}
