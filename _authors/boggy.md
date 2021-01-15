@@ -1,6 +1,6 @@
 ---
 short_name: Boggy
 name: Lukas Bockstaller
-position: Trash Enthusiast 
+position: Trash Enthusiast
 ---
-Boggy, hier muss dein Text hin!
+Boggy ist ein Verkenner des guten Geschmacks und Entwickler von fragwürdigen Ideen.
