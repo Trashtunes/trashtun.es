@@ -21,7 +21,7 @@ jobs:
         SPOTIPY_CLIENT_ID: ${{ secrets.spotipy_client_id }}
         SPOTIPY_CLIENT_SECRET: ${{ secrets.spotipy_client_secret }}
         SPOTIPY_REDIRECT_URI: ${{ secrets.spotipy_redirect_uri }}
-        PLAYLIST_ID: ${{ secrets.spotify_playlist_id }}
+        PLAYLIST_ID: ${{ secrets.playlist_id }}
         SPOTIFY_REFRESH_TOKEN: ${{ secrets.spotify_refresh_token }}
       run: |
         python playlist-manager.py
