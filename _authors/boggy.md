@@ -1,4 +1,5 @@
 ---
+layout: author
 short_name: Boggy
 name: Lukas Bockstaller
 position: Trash Enthusiast

@@ -1,4 +1,5 @@
 ---
+layout: author
 short_name: Christoph
 name: Christoph Rechsteiner
 position: Pop Culture Researcher
