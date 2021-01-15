@@ -1,0 +1,6 @@
+kramdown:
+  hard_wrap: true
+
+collections:
+  authors:
+    output: true

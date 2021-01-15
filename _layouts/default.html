@@ -8,7 +8,13 @@
   <body>
     {% include navigation.html %}
     {% include header.html %}
-    {{ content }}
+    <section>
+      {{ content }}
+    </section>
+
+    <footer class="container">
+      <p>{% for author in site.authors %}<a href="{{ author.url }}">{{ author.short_name }}</a> {% endfor %} &copy; {{ 'now' | date: "%Y" }}</p>
+    </footer>
+
   </body>
 </html>
-

@@ -1,0 +1,12 @@
+---
+layout: utility
+title: Trash Tunes Lovers
+---
+
+<ul>
+    {% for author in site.authors %}
+      <li>
+        <p><a href="{{ author.url }}">{{ author.name }}</a>, <span>{{ author.position }}</span></p>
+      </li>
+    {% endfor %}
+  </ul>

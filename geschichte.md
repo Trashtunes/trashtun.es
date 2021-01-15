@@ -1,8 +1,6 @@
 ---
-layout: default
-title: About
+layout: utility
+title: Geschichte
 ---
 
-# About page
-
-Blabla about me
+Wie DAS alles geschehen konnte

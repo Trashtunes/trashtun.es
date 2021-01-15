@@ -12,8 +12,8 @@
     </svg>
     <ul id="menu">
     {% for item in site.data.navigation %}
-        <a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
-        {{ item.name }}
+        <a href="{{ item.link }}" {% if page.url == item.link %}style="color: #880088;"{% endif %}>
+            <li>{{ item.name }}</li>
         </a>
     {% endfor %}
     </ul>

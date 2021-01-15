@@ -91,6 +91,11 @@ footer{
 }
 footer p{
     padding:0.5rem;
+    font-size: 0.8rem;
+}
+
+footer a{
+    color: #fff;
 }
 
 .timeline {
@@ -298,7 +303,78 @@ transform: translate(0%, 10%);
 justify-content: center;
 }
 
-/* ================  Media Queries ================ */
+/* ================  Utility Site ================ */
+
+.ut-content {
+    display: flex;
+    flex-grow: 1;
+    padding: 4em max(1em, calc(50vw - 35ch));
+    place-items: center;
+  }
+  
+  .ut-content > * {
+    flex-grow: 1;
+  }
+
+  :root {
+    --panel-color: rgba(0, 0, 0, 0.135);
+    --panel-border-width: 0.1em;
+    --panel-padding: 0.75em;
+  }
+  
+  .panel {
+    background: var(--panel-color);
+    border-radius: var(--panel-border-width);
+    padding: var(--panel-border-width);
+  }
+  
+  .panel__header, 
+  .panel__content {
+    padding: var(--panel-padding);
+  }
+  
+  .panel__title {
+    line-height: 1;
+    margin: auto;
+    white-space: nowrap;
+    font-size:3rem;
+        letter-spacing:0.1em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #aa0000;
+    
+  }
+  
+  .panel__content {
+    background: #fff;
+  }
+
+  .panel__content ul{
+    list-style: none;
+  }
+
+
+a {
+    color: #aa0000;
+    text-decoration: none;
+    background-image: linear-gradient(#C4008C, #C4008C),
+      linear-gradient(#880088, #880088),
+      linear-gradient(#AA00AA, #AA00AA);
+    background-size: 20px 2px, 100% 2px, 0 2px;
+    background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 2s linear, background-position 2s linear;
+  }
+  
+  a:hover {
+    background-size: 20px 2px, 0 2px, 100% 2px;
+    background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+  }
+  
+  
+  
+
+  /* ================  Media Queries ================ */
 
 @media screen and (max-width: 660px) {
     header h1{
@@ -394,6 +470,11 @@ justify-content: center;
         margin: 1em 1em 0 1em;
         padding: 1em;
         z-index: 15;
+    }
+
+    .panel__title {
+        white-space: normal;
+        font-size:2rem;
     }
 
 }
