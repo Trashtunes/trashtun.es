@@ -380,7 +380,10 @@ a {
     header h1{
         font-size: 3rem;
         height: 6rem;
-        white-space: normal;
+        text-shadow:
+                4px 4px #d3006c,
+                10px 10px #000000;
+        
     }
 
     .timeline {
@@ -477,6 +480,11 @@ a {
         white-space: normal;
         font-size:2rem;
     }
-
+    #menu{
+        margin: 1rem 0m;
+    }
+    #menu li{
+        font-size: 3rem;
+    }
 }
 
