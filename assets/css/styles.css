@@ -376,7 +376,7 @@ a {
 
   /* ================  Media Queries ================ */
 
-@media only screen and (max-width: 812px){
+@media only screen and (max-width: 945px){
     header h1{
         font-size: 4rem;
         height: 6rem;
