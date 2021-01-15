@@ -84,6 +84,10 @@ nav{
     left: 0;
 }
 
+.content{
+    min-height: calc(70vh - 70px);
+}
+
 footer{
     justify-content: flex-end;
     color: #fff;
@@ -100,7 +104,7 @@ footer a{
 
 .timeline {
     position: relative;
-    width: 660px;
+    width: 960px;
     margin: 0 auto;
     margin-top: 20px;
     padding: 1em 0;
@@ -136,7 +140,7 @@ footer a{
 
 li:nth-child(even).direction > div{
     position: relative;
-    width: 300px;
+    width: 450px;
     float: left;
     text-align: right;
 }
@@ -144,7 +148,7 @@ li:nth-child(even).direction > div{
 
 li:nth-child(odd).direction > div{
     position: relative;
-    width: 300px;
+    width: 450px;
     float: right;
 }
 
