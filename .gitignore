@@ -3,7 +3,7 @@
 
 ### Jekyll ###
 .jekyll-cache
-
+.vscode
 
 ### Mac ###
 .DS_Store
