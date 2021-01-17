@@ -14,7 +14,6 @@ datafile = "_data/trash.yml"
 access_token = os.environ["GITHUB_TOKEN"]
 repository = os.environ["REPOSITORY"]
 issue_nr = int(os.environ["ISSUE"])
-issue_nr = 4
 
 print("Repository: {}".format(repository))
 print("Issue Number: {}".format(issue_nr))
