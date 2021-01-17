@@ -28,7 +28,25 @@ def take_trash_from_github(issue):
     trashdefinitions = re.findall(r"(```)([\s\S]*?)(```)", body)
     # we are interested in the content of the first tuple in a posting
     trashyaml = trashdefinitions[0][1]
+    try:
     new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
+    except yaml.YAMLError as e:
+        errortext = """
+        Parsing your delightful trash resulted in the following error:
+
+        ```
+        {}
+        ```
+        I hope this error is helpful.
+        You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+
+        And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+        """.format(
+            e
+        )
+
+        issue.create_comment(errortext)
+
     return new_trash, latest_comment_user
 
 
