@@ -46,24 +46,42 @@ def take_trash_from_github(issue):
         )
 
         issue.create_comment(errortext)
+        issue.add_to_assignees(latest_comment_user)
 
     return new_trash, latest_comment_user
 
 
-def upload_audio_to_s3(new_trash):
+def upload_audio_to_s3(issue, new_trash):
     file_url = new_trash.pop("audio_comment")
     r = requests.get(file_url, allow_redirects=True)
 
     audiofile = " "
-    zip = zipfile.ZipFile(BytesIO(r.content))
-    files = zip.namelist()
-    for file in files:
-        if file.endswith(".mp3"):
-            # audiofile = zip.open(file)
-            audiofile = file
+    try:
+        zip = zipfile.ZipFile(BytesIO(r.content))
+        files = zip.namelist()
+        for file in files:
+            if file.endswith(".mp3"):
+                # audiofile = zip.open(file)
+                audiofile = file
 
-    # TODO: handle upload
-    return audiofile
+        # TODO: handle upload
+        return audiofile
+    except Exception as e:
+        errortext = """
+        Encountered an error while handling your magnificient voice sensually describing trash:
+
+        ```
+        {}
+        ```
+        I hope this error is helpful.
+        You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+
+        And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+        """.format(
+            e
+        )
+        issue.create_comment(errortext)
+        issue.add_to_assignees(latest_comment_user)
 
 
 def insert_new_trash(new_trash):
@@ -180,7 +198,7 @@ new_trash, latest_comment_user = take_trash_from_github(issue)
 
 new_trash["issue_id"] = issue.number
 new_trash["date"] = issue.created_at.strftime("%d.%m.%Y")
-new_trash["comment_url"] = upload_audio_to_s3(new_trash)
+new_trash["comment_url"] = upload_audio_to_s3(issue, new_trash, latest_comment_user)
 
 trash = insert_new_trash(new_trash)
 trashyaml = yaml.dump(trash, allow_unicode=True)
