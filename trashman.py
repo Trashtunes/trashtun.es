@@ -29,7 +29,7 @@ def take_trash_from_github(issue):
     # we are interested in the content of the first tuple in a posting
     trashyaml = trashdefinitions[0][1]
     try:
-    new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
+        new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
     except yaml.YAMLError as e:
         errortext = """
         Parsing your delightful trash resulted in the following error:
@@ -74,11 +74,11 @@ def insert_new_trash(new_trash):
         # check if an entry already exists
         for index in range(len(trash_list)):
             try:
-            if trash_list[index]["issue_id"] == new_trash["issue_id"]:
-                # update it if it's the case
-                trash_list[index] = new_trash
-                written = True
-                break
+                if trash_list[index]["issue_id"] == new_trash["issue_id"]:
+                    # update it if it's the case
+                    trash_list[index] = new_trash
+                    written = True
+                    break
             except KeyError:
                 pass
         # else append new trash
