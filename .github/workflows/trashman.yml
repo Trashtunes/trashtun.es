@@ -1,0 +1,32 @@
+name: Trashman
+
+on:
+  issue_comment:
+    types: [created, edited]
+  issues:
+    types: [opened, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Process comment
+        env: # Or as an environment variable
+          SPOTIPY_CLIENT_ID: ${{ secrets.spotipy_client_id }}
+          SPOTIPY_CLIENT_SECRET: ${{ secrets.spotipy_client_secret }}
+          SPOTIPY_REDIRECT_URI: ${{ secrets.spotipy_redirect_uri }}
+          PLAYLIST_ID: ${{ secrets.playlist_id }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.spotify_refresh_token }}
+          ISSUE: ${{ github.event.issue.nummber }}
+          REPOSITORY: ${{ github.event.issue.repository }}
+        run: |
+          python trashman.py
