@@ -26,8 +26,8 @@ jobs:
           SPOTIPY_REDIRECT_URI: ${{ secrets.spotipy_redirect_uri }}
           PLAYLIST_ID: ${{ secrets.playlist_id }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.spotify_refresh_token }}
-          ISSUE: ${{ ${{ github.event.issue.number }} || ${{ github.event.issue_comment.nummber }} }}
-          REPOSITORY: ${{ ${{ github.event.issue.repository }} || ${{ github.event.issue_comment.repository }} }}
+          ISSUE: ${{ github.event.issue.number  ||  github.event.issue_comment.nummber }}
+          REPOSITORY: ${{ github.event.issue.repository  ||  github.event.issue_comment.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python trashman.py
