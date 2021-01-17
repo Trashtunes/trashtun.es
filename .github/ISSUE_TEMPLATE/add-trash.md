@@ -2,7 +2,7 @@
 name: add trash
 about: add trash to trashtun.es
 title: ''
-labels: ''
+labels: new trash
 assignees: ''
 
 ---
