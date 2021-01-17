@@ -55,11 +55,14 @@ def insert_new_trash(new_trash):
 
         # check if an entry already exists
         for index in range(len(trash_list)):
+            try:
             if trash_list[index]["issue_id"] == new_trash["issue_id"]:
                 # update it if it's the case
                 trash_list[index] = new_trash
                 written = True
                 break
+            except KeyError:
+                pass
         # else append new trash
         if not written:
             trash_list.append(new_trash)
