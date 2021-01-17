@@ -11,8 +11,13 @@ import zipfile
 
 
 def take_trash_from_github(issue):
+    print("::group::Loading yaml from issue/comment")
+
+    print("Setting default body and user from issue")
     body = issue.body
     latest_comment_user = issue.user
+
+    print("Loading body and user from last comment")
 
     comments = issue.get_comments()
     if comments.totalCount > 0:
@@ -23,11 +28,17 @@ def take_trash_from_github(issue):
         except IndexError:
             pass
 
+    print("Comment: \n{}".format(body))
+    print("User: {}".format(latest_comment_user.name))
+
     # regex returns matches in a list of tuples.
     # Each tuple has this structure: ('```', 'content', '```')
     trashdefinitions = re.findall(r"(```)([\s\S]*?)(```)", body)
     # we are interested in the content of the first tuple in a posting
     trashyaml = trashdefinitions[0][1]
+
+    print("YAML-String: \n{}".format(trashyaml))
+
     try:
         new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
     except yaml.YAMLError as e:
@@ -49,7 +60,11 @@ def take_trash_from_github(issue):
         issue.add_to_assignees(latest_comment_user)
         raise (e)
 
+    print("Parsed YAML: \n{}".format(new_trash))
+    print(::endgroup::)
+
     return new_trash, latest_comment_user
+
 
 
 def upload_audio_to_s3(issue, new_trash, latest_comment_user):
