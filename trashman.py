@@ -51,7 +51,7 @@ def take_trash_from_github(issue):
     return new_trash, latest_comment_user
 
 
-def upload_audio_to_s3(issue, new_trash):
+def upload_audio_to_s3(issue, new_trash, latest_comment_user):
     file_url = new_trash.pop("audio_comment")
     r = requests.get(file_url, allow_redirects=True)
 
