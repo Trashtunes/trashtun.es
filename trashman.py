@@ -32,21 +32,22 @@ def take_trash_from_github(issue):
         new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
     except yaml.YAMLError as e:
         errortext = """
-        Parsing your delightful trash resulted in the following error:
+            # Parsing your delightful trash resulted in the following error:
 
-        ```
-        {}
-        ```
-        I hope this error is helpful.
-        You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+            ```
+            {}
+            ```
+            I hope this error is helpful.
+            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
 
-        And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
         """.format(
             e
         )
 
         issue.create_comment(errortext)
         issue.add_to_assignees(latest_comment_user)
+        raise (e)
 
     return new_trash, latest_comment_user
 
@@ -68,20 +69,24 @@ def upload_audio_to_s3(issue, new_trash, latest_comment_user):
         return audiofile
     except Exception as e:
         errortext = """
-        Encountered an error while handling your magnificient voice sensually describing trash:
+            # Error
 
-        ```
-        {}
-        ```
-        I hope this error is helpful.
-        You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+            Encountered an error while handling your magnificent voice sensually describing trash:
 
-        And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+            ```
+            {}
+            ```
+
+            I hope this error is helpful.
+            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+
+            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
         """.format(
             e
         )
         issue.create_comment(errortext)
         issue.add_to_assignees(latest_comment_user)
+        raise (e)
 
 
 def insert_new_trash(new_trash):
