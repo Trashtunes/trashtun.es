@@ -28,5 +28,6 @@ jobs:
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.spotify_refresh_token }}
           ISSUE: ${{ github.event.issue.nummber }}
           REPOSITORY: ${{ github.event.issue.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python trashman.py
