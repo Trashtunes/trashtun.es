@@ -9,20 +9,6 @@ import time
 import requests
 import zipfile
 
-datafile = "_data/trash.yml"
-
-access_token = os.environ["GITHUB_TOKEN"]
-repository = os.environ["REPOSITORY"]
-issue_nr = int(os.environ["ISSUE"])
-
-print("Repository: {}".format(repository))
-print("Issue Number: {}".format(issue_nr))
-
-
-g = Github(access_token)
-repo = g.get_repo(repository)
-issue = repo.get_issue(number=issue_nr)
-
 
 def take_trash_from_github(issue):
     body = issue.body
@@ -42,24 +28,65 @@ def take_trash_from_github(issue):
     trashdefinitions = re.findall(r"(```)([\s\S]*?)(```)", body)
     # we are interested in the content of the first tuple in a posting
     trashyaml = trashdefinitions[0][1]
-    new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
+    try:
+        new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
+    except yaml.YAMLError as e:
+        errortext = """
+            # Parsing your delightful trash resulted in the following error:
+
+            ```
+            {}
+            ```
+            I hope this error is helpful.
+            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+
+            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+        """.format(
+            e
+        )
+
+        issue.create_comment(errortext)
+        issue.add_to_assignees(latest_comment_user)
+        raise (e)
+
     return new_trash, latest_comment_user
 
 
-def upload_audio_to_s3(new_trash):
+def upload_audio_to_s3(issue, new_trash, latest_comment_user):
     file_url = new_trash.pop("audio_comment")
     r = requests.get(file_url, allow_redirects=True)
 
     audiofile = " "
-    zip = zipfile.ZipFile(BytesIO(r.content))
-    files = zip.namelist()
-    for file in files:
-        if file.endswith(".mp3"):
-            # audiofile = zip.open(file)
-            audiofile = file
+    try:
+        zip = zipfile.ZipFile(BytesIO(r.content))
+        files = zip.namelist()
+        for file in files:
+            if file.endswith(".mp3"):
+                # audiofile = zip.open(file)
+                audiofile = file
 
-    # TODO: handle upload
-    return audiofile
+        # TODO: handle upload
+        return audiofile
+    except Exception as e:
+        errortext = """
+            # Error
+
+            Encountered an error while handling your magnificent voice sensually describing trash:
+
+            ```
+            {}
+            ```
+
+            I hope this error is helpful.
+            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+
+            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+        """.format(
+            e
+        )
+        issue.create_comment(errortext)
+        issue.add_to_assignees(latest_comment_user)
+        raise (e)
 
 
 def insert_new_trash(new_trash):
@@ -69,11 +96,14 @@ def insert_new_trash(new_trash):
 
         # check if an entry already exists
         for index in range(len(trash_list)):
-            if trash_list[index]["issue_id"] == new_trash["issue_id"]:
-                # update it if it's the case
-                trash_list[index] = new_trash
-                written = True
-                break
+            try:
+                if trash_list[index]["issue_id"] == new_trash["issue_id"]:
+                    # update it if it's the case
+                    trash_list[index] = new_trash
+                    written = True
+                    break
+            except KeyError:
+                pass
         # else append new trash
         if not written:
             trash_list.append(new_trash)
@@ -152,11 +182,28 @@ def publish_changes(dry_run, repo, trashyaml, latest_comment_user):
     merge_pr(repo, pr, latest_comment_user)
 
 
+datafile = "_data/trash.yml"
+
+access_token = os.environ["GITHUB_TOKEN"]
+repository = os.environ["REPOSITORY"]
+issue_nr = int(os.environ["ISSUE"])
+
+print("Repository: {}".format(repository))
+print("Issue Number: {}".format(issue_nr))
+
+
+g = Github(access_token)
+repo = g.get_repo(repository)
+issue = repo.get_issue(number=issue_nr)
+
+if not repo.get_label("new trash") in issue.labels:
+    exit()
+
 new_trash, latest_comment_user = take_trash_from_github(issue)
 
 new_trash["issue_id"] = issue.number
 new_trash["date"] = issue.created_at.strftime("%d.%m.%Y")
-new_trash["comment_url"] = upload_audio_to_s3(new_trash)
+new_trash["comment_url"] = upload_audio_to_s3(issue, new_trash, latest_comment_user)
 
 trash = insert_new_trash(new_trash)
 trashyaml = yaml.dump(trash, allow_unicode=True)
