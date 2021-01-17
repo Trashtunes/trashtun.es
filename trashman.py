@@ -42,29 +42,26 @@ def take_trash_from_github(issue):
     try:
         new_trash = yaml.load(trashyaml, Loader=yaml.FullLoader)
     except yaml.YAMLError as e:
-        errortext = """
-            # Parsing your delightful trash resulted in the following error:
+        errortext = """**Parsing your delightful trash resulted in the following error:**
 
-            ```
-            {}
-            ```
-            I hope this error is helpful.
-            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
+```
+{}
+```
+I hope this error is helpful.
+You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
 
-            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
         """.format(
             e
         )
-
-        issue.create_comment(errortext)
+        issue.create_comment(g.render_markdown(errortext, context=repo))
         issue.add_to_assignees(latest_comment_user)
         raise (e)
 
     print("Parsed YAML: \n{}".format(new_trash))
-    print(::endgroup::)
+    print("::endgroup::")
 
     return new_trash, latest_comment_user
-
 
 
 def upload_audio_to_s3(issue, new_trash, latest_comment_user):
@@ -83,23 +80,21 @@ def upload_audio_to_s3(issue, new_trash, latest_comment_user):
         # TODO: handle upload
         return audiofile
     except Exception as e:
-        errortext = """
-            # Error
+        errortext = """ **Error**
+Encountered an error while handling your magnificent voice sensually describing trash:
 
-            Encountered an error while handling your magnificent voice sensually describing trash:
+```
+{}
+```
 
-            ```
-            {}
-            ```
+I hope this error is helpful.
+You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
 
-            I hope this error is helpful.
-            You can retry by appending a new comment to this issue with the same formatting or by editing the issue content.
-
-            And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
+And as always, remember to  **REUSE**, **REDUCE** and **RAVE**
         """.format(
             e
         )
-        issue.create_comment(errortext)
+        issue.create_comment(g.render_markdown(errortext, context=repo))
         issue.add_to_assignees(latest_comment_user)
         raise (e)
 
@@ -203,6 +198,8 @@ access_token = os.environ["GITHUB_TOKEN"]
 repository = os.environ["REPOSITORY"]
 issue_nr = int(os.environ["ISSUE"])
 
+issue_nr = 12
+
 print("Repository: {}".format(repository))
 print("Issue Number: {}".format(issue_nr))
 
@@ -211,8 +208,11 @@ g = Github(access_token)
 repo = g.get_repo(repository)
 issue = repo.get_issue(number=issue_nr)
 
+
 if not repo.get_label("new trash") in issue.labels:
     exit()
+
+print(issue)
 
 new_trash, latest_comment_user = take_trash_from_github(issue)
 
