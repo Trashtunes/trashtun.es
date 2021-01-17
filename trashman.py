@@ -9,20 +9,6 @@ import time
 import requests
 import zipfile
 
-datafile = "_data/trash.yml"
-
-access_token = os.environ["GITHUB_TOKEN"]
-repository = os.environ["REPOSITORY"]
-issue_nr = int(os.environ["ISSUE"])
-
-print("Repository: {}".format(repository))
-print("Issue Number: {}".format(issue_nr))
-
-
-g = Github(access_token)
-repo = g.get_repo(repository)
-issue = repo.get_issue(number=issue_nr)
-
 
 def take_trash_from_github(issue):
     body = issue.body
@@ -151,6 +137,23 @@ def publish_changes(dry_run, repo, trashyaml, latest_comment_user):
     pr = create_pr(repo, branch_name)
     merge_pr(repo, pr, latest_comment_user)
 
+
+datafile = "_data/trash.yml"
+
+access_token = os.environ["GITHUB_TOKEN"]
+repository = os.environ["REPOSITORY"]
+issue_nr = int(os.environ["ISSUE"])
+
+print("Repository: {}".format(repository))
+print("Issue Number: {}".format(issue_nr))
+
+
+g = Github(access_token)
+repo = g.get_repo(repository)
+issue = repo.get_issue(number=issue_nr)
+
+if not repo.get_label("new trash") in issue.labels:
+    exit()
 
 new_trash, latest_comment_user = take_trash_from_github(issue)
 
