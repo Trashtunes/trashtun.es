@@ -141,7 +141,7 @@ def publish_changes(dry_run, repo, trashyaml, latest_comment_user):
 
     def commit_changes(repo, branch_name, trashyaml):
         commit_message = "Adds track {} as specified in issue #{}".format(
-            new_trash["songtitle"], new_trash["issue_id"]
+            new_trash["songname"], new_trash["issue_id"]
         )
 
         ref = "refs/heads/" + branch_name
@@ -163,7 +163,7 @@ def publish_changes(dry_run, repo, trashyaml, latest_comment_user):
 
     def create_pr(repo, branch_name):
 
-        pr_title = "Adds {} to Trash Tun.es".format(new_trash["songtitle"])
+        pr_title = "Adds {} to Trash Tun.es".format(new_trash["songname"])
         pr_body = "Closes #{}".format(new_trash["issue_id"])
 
         try:
@@ -188,7 +188,7 @@ def publish_changes(dry_run, repo, trashyaml, latest_comment_user):
             )
             pr.add_to_assignees(repo.get_collaborators())
 
-    branch_name = "_".join(new_trash["songtitle"].lower().split()) + "_#{}".format(
+    branch_name = "_".join(new_trash["songname"].lower().split()) + "_#{}".format(
         new_trash["issue_id"]
     )
 
