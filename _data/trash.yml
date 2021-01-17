@@ -17,7 +17,7 @@
     '
   comment_url: jaja.mp3
   date: 17.01.2021
-  id: 5
+  issue_id: 5
   songtitle: Eine andere Tragödie
   spotify_uri: 009jCZOeESiUSyuQkUFNaG
 - captions: "JaJa, sprach der Förster\nund schwang sich von einem Kronleuchter zum\
@@ -26,41 +26,34 @@
     \nJaJa, sprach der Förster... \n"
   comment_url: jaja.mp3
   date: 17.01.2021
-  id: 4
+  issue_id: 4
   songtitle: Der Tragödie Test
   spotify_uri: 009jCZOeESiUSyuQkUFNaG
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 18.11.2020
-  id: 6
   songname: Unz Unz
   spotify_uri: 2vjKei86vFPZBodhXEqEmX
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 25.09.2020
-  id: 7
   songname: I Want To Drink In A Bar
   spotify_uri: 5vuEA0kUCiUsawDVVvxNt1
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 04.09.2020
-  id: 3
   songname: Fitness
   spotify_uri: 2iZ7yvWhbbF3SrMh9JRnWk
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 27.07.2020
-  id: 2
   songname: Fisch
   spotify_uri: 75Zw4VByNfabLgBDWFfqgf
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 07.07.2020
-  id: 1
   songname: Kleinanzeige
   spotify_uri: 2c5s2e45WcIqMcroGyvubI
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 13.01.2020
-  id: 8
   songname: Donald Trump
   spotify_uri: 009jCZOeESiUSyuQkUFNaG
 - comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
   date: 13.01.2020
-  id: 0
   songname: M E D I S
   spotify_uri: 6iP7La0krpgwSGVslQyiOU
