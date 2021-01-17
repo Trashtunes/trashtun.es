@@ -375,8 +375,24 @@ a {
     background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
   }
   
-  
-  
+  .drop-cap::first-letter {
+    -webkit-initial-letter: 2;
+            initial-letter: 2;
+    color: #d3006c;
+    font-weight: bold;
+    margin-right: .75em;
+  }
+
+  .panel__content span {
+    display: table;
+    font-size: 0.8rem;
+    color: #880088;
+ }
+
+ .panel__content h2 {
+    margin: 0;
+ }
+
 
   /* ================  Media Queries ================ */
 
