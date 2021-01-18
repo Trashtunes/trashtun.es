@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 ```
-songtitle: Add the title/songtitle of the posting here
+songname: Add the title/songtitle of the posting here
 spotify_uri: Add the spotify uri of the track here
 audio_comment: Upload your audiocomment as a zipped .mp3 to this issue and put the bare link here
 captions: |
