@@ -1,39 +1,48 @@
-- captions: 'Spinat ist gesund!
+- audio_comment: null
+  captions: "Add your captions here. Always leading with two spaces.
+    "
+  comment_url: null
+  date: 18.01.2021
+  issue_id: 20
+  songname: Add the title/songtitle of the posting here
+  spotify_uri: 4knhG0ATU2XQ88NiAPSWZ4
+- captions: "Spinat ist gesund!
 
-    '
-  comment_url: __MACOSX/._spinaci.mp3
+    "
+  comment_url: null
   date: 18.01.2021
   issue_id: 17
   songname: Spinaci
   spotify_uri: 4knhG0ATU2XQ88NiAPSWZ4
-- captions: "Die Orange dankt ab aber, das geht nicht ohne passende musikalische Untermalung.\
+- captions:
+    "Die Orange dankt ab aber, das geht nicht ohne passende musikalische Untermalung.\
     \   \n"
-  comment_url: jaja.mp3
+  comment_url: null
   date: 17.01.2021
   issue_id: 12
   songname: Donald Trump
   spotify_uri: 009jCZOeESiUSyuQkUFNaG
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 18.11.2020
   songname: Unz Unz
   spotify_uri: 2vjKei86vFPZBodhXEqEmX
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 25.09.2020
   songname: I Want To Drink In A Bar
   spotify_uri: 5vuEA0kUCiUsawDVVvxNt1
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 04.09.2020
   songname: Fitness
   spotify_uri: 2iZ7yvWhbbF3SrMh9JRnWk
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 27.07.2020
   songname: Fisch
   spotify_uri: 75Zw4VByNfabLgBDWFfqgf
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 07.07.2020
   songname: Kleinanzeige
   spotify_uri: 2c5s2e45WcIqMcroGyvubI
-- comment_url: https://upload.wikimedia.org/wikipedia/commons/0/0c/04.Iv.Allegro.ogg
+- comment_url: null
   date: 13.01.2020
   songname: M E D I S
   spotify_uri: 6iP7La0krpgwSGVslQyiOU
