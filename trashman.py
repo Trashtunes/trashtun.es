@@ -208,9 +208,18 @@ class Trashman:
             print("User {} has the right to commit".format(user))
             time.sleep(4)
 
-            status = pr.merge()
+            try:
+                status = pr.merge()
 
-            if not status.merged:
+                if not status.merged:
+                    print(
+                        "Couldn't merge automatically. Merge status: {}".format(
+                            self.pr.mergeable_state
+                        )
+                    )
+                    pr.create_issue_comment("Couldn't merge automatically.")
+                    pr.add_to_assignees(user)
+            except:
                 print(
                     "Couldn't merge automatically. Merge status: {}".format(
                         self.pr.mergeable_state
@@ -240,6 +249,7 @@ class Trashman:
         print("::group::Interacting with repository content")
         self.commit_changes(branch_name, trashyaml, new_trash)
         pr = self.create_pr(branch_name, new_trash)
+
         self.merge_pr(pr, self.latest_comment_user)
         print("::endgroup::")
 
@@ -248,8 +258,6 @@ class Trashman:
         access_token = os.environ["GITHUB_TOKEN"]
         repository = os.environ["REPOSITORY"]
         issue_nr = int(os.environ["ISSUE"])
-
-        issue_nr = 12
 
         print("Repository: {}".format(repository))
         print("Issue Number: {}".format(issue_nr))
