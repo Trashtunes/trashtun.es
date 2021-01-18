@@ -207,10 +207,10 @@ class Trashman:
         if user in self.repo.get_collaborators():
             print("User {} has the right to commit".format(user))
             time.sleep(4)
-            if self.pr.mergeable:
-                pr.merge()
-                print("Merged commit")
-            else:
+
+            status = pr.merge()
+
+            if not status.merged:
                 print(
                     "Couldn't merge automatically. Merge status: {}".format(
                         self.pr.mergeable_state
