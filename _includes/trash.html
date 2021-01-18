@@ -6,10 +6,12 @@
                 <span class="time-wrapper"><span class="time">{{ trash.date | date_to_string }}</span></span>
             </div>
             <div class="desc"><iframe src=https://open.spotify.com/embed/track/{{trash.spotify_uri}} width="280" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
-            <audio controls>
-                <source src={{trash.comment_url}} type="audio/ogg">
-                Your browser does not support the audio element.
-            </audio>
+            {% if trash.comment_url != null %}
+                <audio controls>
+                    <source src={{trash.comment_url}} type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            {% endif %}
         </div>
     </li>
 {% endfor %}

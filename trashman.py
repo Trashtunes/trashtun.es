@@ -209,6 +209,7 @@ class Trashman:
             time.sleep(4)
 
             try:
+
                 status = pr.merge()
 
                 if not status.merged:
@@ -275,9 +276,14 @@ class Trashman:
 
         self.new_trash["issue_id"] = self.issue.number
         self.new_trash["date"] = self.issue.created_at.strftime("%d.%m.%Y")
-        self.new_trash["comment_url"] = self.upload_audio_to_s3(
-            self.issue, self.new_trash
-        )
+
+        if self.new_trash["audio_comment"]:
+            self.new_trash["comment_url"] = self.upload_audio_to_s3(
+                self.issue, self.new_trash
+            )
+        else:
+            del self.new_trash["audio_comment"]
+            self.new_trash["comment_url"] = None
 
         trash = self.insert_new_trash(self.new_trash)
         trashyaml = yaml.dump(trash, allow_unicode=True)

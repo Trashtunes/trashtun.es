@@ -1,20 +1,22 @@
 - captions: 'Add your captions here. Always leading with two spaces.
 
     '
+
   comment_url: null
   date: 18.01.2021
   issue_id: 20
   songname: Add the title/songtitle of the posting here
   spotify_uri: 4knhG0ATU2XQ88NiAPSWZ4
-- captions: 'Spinat ist gesund!
+- captions: "Spinat ist gesund!
 
-    '
+    "
   comment_url: null
   date: 18.01.2021
   issue_id: 17
   songname: Spinaci
   spotify_uri: 4knhG0ATU2XQ88NiAPSWZ4
-- captions: "Die Orange dankt ab aber, das geht nicht ohne passende musikalische Untermalung.\
+- captions:
+    "Die Orange dankt ab aber, das geht nicht ohne passende musikalische Untermalung.\
     \   \n"
   comment_url: null
   date: 17.01.2021
