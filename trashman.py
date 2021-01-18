@@ -209,7 +209,7 @@ class Trashman:
             time.sleep(4)
 
             try:
-                raise Exception
+
                 status = pr.merge()
 
                 if not status.merged:
@@ -259,8 +259,6 @@ class Trashman:
         access_token = os.environ["GITHUB_TOKEN"]
         repository = os.environ["REPOSITORY"]
         issue_nr = int(os.environ["ISSUE"])
-
-        issue_nr = 20
 
         print("Repository: {}".format(repository))
         print("Issue Number: {}".format(issue_nr))
