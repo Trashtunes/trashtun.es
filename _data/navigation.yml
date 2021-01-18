@@ -1,5 +1,7 @@
 - name: Home
   link: /
+- name: Spotify Playlist
+  link: https://open.spotify.com/playlist/0N98QZjTSK6vSsptnGmPve?si=FVANFRf7R_aQNkUqRJuvMg
 - name: Geschichte
   link: /geschichte.html
 - name: Team
