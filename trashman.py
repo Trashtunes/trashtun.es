@@ -208,7 +208,7 @@ class Trashman:
             print("User {} has the right to commit".format(user))
             time.sleep(4)
             if self.pr.mergeable:
-                self.pr.merge()
+                pr.merge()
                 print("Merged commit")
             else:
                 print(
@@ -216,16 +216,16 @@ class Trashman:
                         self.pr.mergeable_state
                     )
                 )
-                self.pr.create_issue_comment("Couldn't merge automatically.")
-                self.pr.add_to_assignees(user)
+                pr.create_issue_comment("Couldn't merge automatically.")
+                pr.add_to_assignees(user)
 
         else:
             print("User {} has not the right to commit".format(user))
-            self.pr.create_issue_comment(
+            pr.create_issue_comment(
                 "Thank you for your suggestions. Our responsible trash men will take over from here"
             )
             print("Created issue comment")
-            self.pr.add_to_assignees(repo.get_collaborators())
+            pr.add_to_assignees(repo.get_collaborators())
             print("Assigned collaborators")
 
         print("::endgroup::")
