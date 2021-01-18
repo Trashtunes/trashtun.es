@@ -284,6 +284,7 @@ class Trashman:
                 self.issue, self.new_trash
             )
         else:
+            del self.new_trash["audio_comment"]
             self.new_trash["comment_url"] = None
 
         trash = self.insert_new_trash(self.new_trash)
