@@ -1,6 +1,7 @@
 ---
 layout: utility
 title: Kontakt
+description: Trash Tun.es Impressum
 ---
 
 Lukas Bockstaller

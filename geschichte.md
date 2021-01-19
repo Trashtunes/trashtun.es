@@ -1,6 +1,7 @@
 ---
 layout: text
 title: Geschichte
+description: Geschichte von trashtun.es, Trashy Musik ist ein Geschenk
 ---
 
 Drehen wir die Zeit mal zurück. Also bevor wir kollektiv die Welt vor dem Fernsehen retten wollten und danach die Ärmel hochkrempeln sollten.

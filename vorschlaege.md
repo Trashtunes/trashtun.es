@@ -1,6 +1,7 @@
 ---
 layout: utility
 title: Vorschläge
+description: Teile deinen Trash mit uns!
 ---
 
 Du hast auch Trash den du der Welt nicht vorenthalten willst?
