@@ -266,8 +266,6 @@ class Trashman:
         print("Repository: {}".format(repository))
         print("Issue Number: {}".format(issue_nr))
 
-        issue_nr = 22
-
         self.g = Github(access_token)
         self.repo = self.g.get_repo(repository)
         self.issue = self.repo.get_issue(number=issue_nr)
