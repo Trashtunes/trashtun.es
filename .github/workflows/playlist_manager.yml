@@ -26,4 +26,4 @@ jobs:
           PLAYLIST_ID: ${{ secrets.playlist_id }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.spotify_refresh_token }}
         run: |
-          python playlist-manager.py
+          python playlist_manager.py

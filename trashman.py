@@ -9,6 +9,7 @@ import time
 from pprint import pprint
 import requests
 import zipfile
+from playlist_manager import mangage_playlist
 
 
 class Trashman:
@@ -220,10 +221,12 @@ class Trashman:
                     )
                     pr.create_issue_comment("Couldn't merge automatically.")
                     pr.add_to_assignees(user)
+                else:
+                    manage_playlist()
             except:
                 print(
                     "Couldn't merge automatically. Merge status: {}".format(
-                        self.pr.mergeable_state
+                        pr.mergeable_state
                     )
                 )
                 pr.create_issue_comment("Couldn't merge automatically.")
@@ -262,6 +265,8 @@ class Trashman:
 
         print("Repository: {}".format(repository))
         print("Issue Number: {}".format(issue_nr))
+
+        issue_nr = 22
 
         self.g = Github(access_token)
         self.repo = self.g.get_repo(repository)
