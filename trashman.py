@@ -179,6 +179,12 @@ class Trashman:
             sha=old_file.sha,
             branch=branch_name,
         )
+
+        print("Overwriting local file")
+        f = open(self.datafile, "w")
+        f.write(trashyaml)
+        f.close()
+
         print("Commited file")
         print("::endgroup::")
         return
@@ -234,6 +240,7 @@ class Trashman:
 
             try:
                 if status:
+                    print("Publishing playlist")
                     manage_playlist()
             except Exception as e:
                 print(e)
