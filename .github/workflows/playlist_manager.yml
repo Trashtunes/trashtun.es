@@ -2,6 +2,8 @@ name: Playlist Manager
 
 on:
   push:
+    paths:
+      - "_data/trash.yml"
     branches:
       - master
 
