@@ -9,7 +9,7 @@ import time
 from pprint import pprint
 import requests
 import zipfile
-from playlist_manager import mangage_playlist
+from playlist_manager import manage_playlist
 
 
 class Trashman:
@@ -221,16 +221,22 @@ class Trashman:
                     )
                     pr.create_issue_comment("Couldn't merge automatically.")
                     pr.add_to_assignees(user)
-                else:
-                    manage_playlist()
-            except:
+
+            except Exception as e:
                 print(
                     "Couldn't merge automatically. Merge status: {}".format(
                         pr.mergeable_state
                     )
                 )
+                print(e)
                 pr.create_issue_comment("Couldn't merge automatically.")
                 pr.add_to_assignees(user)
+
+            try:
+                if status:
+                    manage_playlist()
+            except Exception as e:
+                print(e)
 
         else:
             print("User {} has not the right to commit".format(user))
