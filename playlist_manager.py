@@ -6,7 +6,7 @@ import sys
 import yaml
 
 
-def mangage_playlist():
+def manage_playlist():
 
     playlist_id = os.environ["PLAYLIST_ID"]
     refresh_token = os.environ["SPOTIFY_REFRESH_TOKEN"]
@@ -36,4 +36,4 @@ def mangage_playlist():
     results = sp.playlist_replace_items(playlist_id, tracklist)
 
 
-mangage_playlist()
+manage_playlist()
