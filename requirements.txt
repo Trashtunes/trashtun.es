@@ -14,7 +14,7 @@ pathspec==0.8.1
 pluggy==0.13.1
 py==1.10.0
 PyGithub==1.54.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 pyparsing==2.4.7
 pytest==6.2.1
 PyYAML==5.4
