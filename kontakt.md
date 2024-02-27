@@ -5,8 +5,8 @@ description: Trash Tun.es Impressum
 ---
 
 Lukas Bockstaller
-Kieler Weg 1
-69181 Leimen
+Pfalzplatz 18
+68163 Mannheim
 
 Christoph Rechsteiner
 Augustastraße 19
